@@ -72,7 +72,8 @@ TEMPLATES = [
 # -----------------------------
 # WSGI
 # -----------------------------
-WSGI_APPLICATION = 'task_analyzer.wsgi.application'
+WSGI_APPLICATION = 'backend.task_analyzer.wsgi.application'
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 
