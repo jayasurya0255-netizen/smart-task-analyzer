@@ -8,5 +8,5 @@ def home(request):
 urlpatterns = [
     path('', home),  # ← This fixes the 404 root URL
     path('admin/', admin.site.urls),
-    path('api/tasks/', include('tasks.urls')),
+    path('api/tasks/', include('backend.tasks.urls')),
 ]
