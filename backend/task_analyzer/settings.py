@@ -7,7 +7,7 @@ SECRET_KEY = "replace-this-with-your-secret-key"
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # -----------------------------
