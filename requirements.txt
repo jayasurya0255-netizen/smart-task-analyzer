@@ -69,3 +69,4 @@ visdom==0.2.4
 websocket-client==1.8.0
 wheel==0.44.0
 gunicorn
+numpy
