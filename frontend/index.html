@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Task Analyzer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <h1>Smart Task Analyzer</h1>
+        <p class="subtitle">Score and prioritize your tasks using urgency, importance, effort, and dependencies.</p>
+      </div>
+    </header>
+
+    <!-- Input Section -->
+    <section class="card">
+      <h2 class="section-title">Input Tasks</h2>
+
+      <div class="input-grid">
+        <!-- Single Task Form -->
+        <div class="input-column">
+          <h3 class="subheading">Add Task (Optional)</h3>
+          <form id="task-form" class="form">
+            <label>
+              Title
+              <input id="title" placeholder="Fix login bug" required />
+            </label>
+
+            <label>
+              Due date
+              <input id="due_date" type="date" />
+            </label>
+
+            <label>
+              Estimated hours
+              <input id="estimated_hours" type="number" step="0.5" placeholder="e.g. 3" />
+            </label>
+
+            <label>
+              Importance (1–10)
+              <input id="importance" type="number" min="1" max="10" value="5" />
+            </label>
+
+            <label>
+              Dependencies (comma-separated IDs)
+              <input id="dependencies" placeholder="e.g. T1, T2" />
+            </label>
+
+            <button type="submit" class="btn btn-primary full-width">Add Task</button>
+          </form>
+
+          <div class="local-tasks-box">
+            <div class="box-header">
+              <h3 class="subheading">Tasks Added Manually</h3>
+              <span class="pill pill-soft" id="localCount">0</span>
+            </div>
+            <div id="localTasksList" class="list-empty">No tasks added yet.</div>
+          </div>
+        </div>
+
+        <!-- Bulk JSON + Controls -->
+        <div class="input-column">
+          <h3 class="subheading">Bulk JSON Input</h3>
+          <p class="hint">
+            Paste an array of tasks:
+          </p>
+          <pre class="example">
+[
+  {
+    "id": "T1",
+    "title": "Fix login bug",
+    "due_date": "2025-11-30",
+    "estimated_hours": 3,
+    "importance": 8,
+    "dependencies": []
+  }
+]</pre>
+
+          <textarea id="taskInput" rows="8" placeholder='[{"id":"T1","title":"Fix login bug","due_date":"2025-11-30","estimated_hours":3,"importance":8,"dependencies":[]}]'></textarea>
+
+          <div class="controls">
+            <div class="control-group">
+              <label class="label-inline">Strategy</label>
+              <select id="strategyDropdown">
+                <option value="smart">Smart Balance</option>
+                <option value="fastest">Fastest Wins</option>
+                <option value="impact">High Impact</option>
+                <option value="deadline">Deadline Driven</option>
+              </select>
+            </div>
+
+            <div class="control-buttons">
+              <button id="analyzeBtn" class="btn btn-primary">Analyze Tasks</button>
+              <button id="countBtn" type="button" class="btn btn-secondary">Count Complete Entries</button>
+            </div>
+          </div>
+
+          <div id="countResults" class="count-results" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="card">
+      <div class="section-header">
+        <h2 class="section-title">Analysis Results</h2>
+        <span class="hint" id="resultsHint">Run an analysis to see prioritized tasks.</span>
+      </div>
+
+      <div id="results" class="results-grid"></div>
+    </section>
+
+    <!-- Eisenhower Matrix -->
+    <section class="card">
+      <div class="section-header">
+        <h2 class="section-title">Eisenhower Matrix</h2>
+        <span class="hint">View your tasks on Urgent vs Important grid.</span>
+      </div>
+
+      <div class="controls">
+        <button id="showMatrixBtn" type="button" class="btn btn-secondary">
+          Build Eisenhower Matrix
+        </button>
+      </div>
+
+      <div id="matrixContainer" class="visual-container" style="display:none;">
+        <div id="matrix" class="matrix-area"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
