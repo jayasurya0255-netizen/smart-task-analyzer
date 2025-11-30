@@ -45,7 +45,8 @@ MIDDLEWARE = [
 # -----------------------------
 # URLS
 # -----------------------------
-ROOT_URLCONF = 'task_analyzer.urls'
+ROOT_URLCONF = "backend.task_analyzer.urls"
+
 
 
 # -----------------------------
