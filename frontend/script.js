@@ -134,7 +134,7 @@ async function analyzeTasks() {
     console.log("Sending data:", finalTasks);
 
     try {
-        const response = await fetch('http://127.0.0.1:8000/api/tasks/analyze/', {
+        const response = await fetch('https://dashboard.render.com/web/srv-d4m56eruibrs738cakc0/deploys/dep-d4m5ragdl3ps73fu459g?m=max', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
